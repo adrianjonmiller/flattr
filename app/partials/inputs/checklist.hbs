@@ -1,0 +1,13 @@
+{{#> inputs/base}}
+  {{#if label}}
+    <h6 class="collapse c-1">{{camelToSentence label}}</h6>
+  {{/if}}
+  <ul class="unstyle">
+    {{#each values}}
+      <li class="collapse">
+        <label class="d-1"><input type="checkbox" name="{{../label}}" value="{{@key}}" {{#if ../value}}{{#if (hasValue @key ../value)}}checked{{/if}}{{/if}}> {{name}}</label>
+      </li>
+    {{/each}}
+  </ul>
+
+{{/inputs/base}}

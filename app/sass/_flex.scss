@@ -1,0 +1,65 @@
+.flex {
+  display: flex;
+
+  > * {
+    margin-top: 0 !important;
+  }
+
+  > .flex-fill {
+    flex: 1 0 auto;
+  }
+
+  > .flex-center {
+    margin: 0 auto;
+  }
+}
+
+.grid {
+  margin-left: -1rem;
+  flex-wrap: wrap;
+
+  > * {
+    padding-left: 1rem;
+  }
+}
+
+$columns: 6;
+
+$widths: ();
+
+$bp: (
+  base: 0,
+  sm: 480px,
+  md: 720px,
+  lg: 960px
+);
+
+@for $i from 1 through $columns {
+  @for $j from 1 through $i {
+    $per: percentage($j/$i);
+    $list: map-values($widths);
+    @if index($list, $per) == null {
+      $widths: map-merge($widths, ( #{$j}-#{$i}: $per));
+    }
+  }
+}
+
+@each $b, $query in $bp {
+  @each $name, $value in $widths {
+    @if $b != 'base' {
+      ._#{$name}--#{$b} {
+        width: 100%;
+        @media screen and (min-width: #{$query}) {
+          flex-basis: $value;
+          max-width: $value;
+        }
+      }
+    } @else {
+      ._#{$name} {
+        flex-basis: $value;
+        max-width: $value;
+        width: 100%;
+      }
+    }
+  }
+}

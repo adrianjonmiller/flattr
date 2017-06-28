@@ -1,0 +1,11 @@
+<div class="flex">
+  <div class="flex-center">
+    {{message}}
+    <form class="" method="post">
+      {{> inputs/text type="text" id=(createUid) label="username" }}
+      {{> inputs/text type="password" id=(createUid) label="password" }}
+      {{> inputs/text type="password" id=(confirm) label="confirm" }}
+      {{> button text="Submit" size="c-1"}}
+    </form>
+  </div>
+</div>

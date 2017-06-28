@@ -1,0 +1,26 @@
+{
+  "name": "clownstick",
+  "description": "Count down timer and facebook post for days until 45 is out",
+  "main": "index.js",
+  "authors": [
+    "Adrian Miller"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "countdown",
+    "45",
+    "express"
+  ],
+  "homepage": "http://countdown45.com/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "mathsass": "^0.10.0"
+  }
+}

@@ -1,0 +1,7 @@
+node_modules
+public/css
+public/js
+.DS_Store
+bower_components
+app/partials/critical.css.hbs
+app/data/db.json

@@ -1,0 +1,27 @@
+{{#unless href}}
+<button class="cancel {{size}} {{js}}">
+  <span class="btn-text">{{text}}</span>
+</button>
+{{else}}
+  <a class="btn {{size}}" href="{{href}}" target="{{target}}"><span class="btn-text">{{text}}</span></a>
+{{/unless}}
+
+{{#comment}}
+<style class="scss" lang="scss">
+  .cancel {
+    background-color: rgba(black, 0.4);
+    border-radius: 99em;
+    box-shadow: 0 0 0 1px rgba(black, 0.4);
+    color: yellow;
+    display: inline-block;
+    line-height: 1em;
+    padding: .75em 1.5em .75em;
+
+    &:hover {
+      background: rgba(black, 0.7);
+      box-shadow: 0 0 0 1px rgba(black, 0.7);
+      color: yellow;
+    }
+  }
+</style>
+{{/comment}}

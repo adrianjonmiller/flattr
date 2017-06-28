@@ -1,0 +1,24 @@
+{{#unless href}}
+<button class="btn {{size}} {{js}}">
+  <span class="btn-text">{{text}}</span>
+</button>
+{{else}}
+  <a class="btn {{size}}" href="{{href}}" target="{{target}}"><span class="btn-text">{{text}}</span></a>
+{{/unless}}
+
+{{#comment}}
+<style class="scss" lang="scss">
+  .btn {
+    padding: .75em 1.5em .75em;
+    box-shadow: 0 0 0 1px black;
+    border-radius: 99em;
+    line-height: 1em;
+    display: inline-block;
+
+    &:hover {
+      background: black;
+      color: yellow;
+    }
+  }
+</style>
+{{/comment}}

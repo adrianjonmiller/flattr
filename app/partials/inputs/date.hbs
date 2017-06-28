@@ -1,0 +1,8 @@
+{{#> inputs/base value=value}}
+  {{#if label}}
+  <legend>
+    <label for="{{id}}" class="collapse c-1">{{camelToSentence label}}</label>
+  </legend>
+  {{/if}}
+  <input id="{{id}}" type="date" name="{{label}}" value="{{#unless (equal type 'password')}}{{value}}{{/unless}}" {{#if required}}required{{/if}}>
+{{/inputs/base}}

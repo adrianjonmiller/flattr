@@ -1,0 +1,130 @@
+<div class="flex">
+  <div class="sidebar collapse">
+    <a href="/">Back to Site</a>
+    {{#each data}}
+      <h6 class="sidebar-header e-1 collapse--quarter {{#if (equal @key ../id)}}is-active{{/if}}">{{pluralize (camelToSentence @key)}} <a class="sidebar-header-new float--right" href="/admin/new/{{@key}}">+</a></h6>
+      <ul class="unstyle">
+        {{#each this}}
+          <li class="sidebar-item d-1 collapse {{#if (equal @key ../../id)}}is-active{{/if}}">
+            <a href="/admin/edit/{{@../key}}/{{@key}}">
+              {{this.name}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    {{/each}}
+  </div>
+
+  <div class="main flex-fill">
+    {{#if error}}
+      {{error}}
+    {{/if}}
+
+    {{#if editing}}
+    <h2>Editing {{camelToSentence modelType}}</h2>
+    <ul class="unstyle">
+      <form class="" method="post">
+        {{#each model}}
+          <li>
+            {{>(inputs type) value=(lookup ../editing @key) name=name id=(createUid) label=@key }}
+          </li>
+        {{/each}}
+        <div class="flex grid">
+          <div class="">
+            {{> button text="Save" size="e-1"}}
+          </div>
+          <div class="">
+            {{> button.cancel text="Delete" size="e-1" js="js-delete"}}
+          </div>
+        </div>
+      </form>
+    </ul>
+
+    {{else if model}}
+    <h2>Adding {{camelToSentence modelType}}</h2>
+    <ul class="unstyle">
+      <form class="" method="post">
+        {{#each model}}
+          <li>
+            {{>(inputs type) value=default id=(createUid) name=name label=@key values=values }}
+          </li>
+        {{/each}}
+        {{> button text="Save" size="e-1"}}
+      </form>
+    </ul>
+    {{/if}}
+  </div>
+</div>
+{{#comment}}
+  <style class="scss" lang="scss">
+    .main {
+      padding: 1rem 3rem 1rem 11rem;
+    }
+
+    .sidebar {
+      width: 10rem;
+      background-color: #333;
+      padding: .5rem;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow-y: scroll;
+      color: white;
+
+      &-header {
+        border-bottom: solid thin white;
+        height: 1.5rem;
+        line-height: 1.5rem;
+
+        &-new {
+          display: inline-block;
+          width: 1.5rem;
+          margin-right: -.5rem;
+          height: 1rem;
+          line-height: .9rem;
+          text-align: center;
+          margin-top: .1rem;
+          border-radius: 99px 0 0 99px;
+        }
+
+        &.is-active > a {
+          background-color: white;
+          color: #333;
+        }
+      }
+
+      &-item {
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        border-bottom: solid transparent thin;
+        padding: 0 .5rem 0 .25rem;
+        margin: 0 -.5rem .25rem -0.25rem;
+        border-radius: 99rem 0 0 99rem;
+
+        &:hover {
+          background-color: #555;
+        }
+
+        > a {
+          display: block;
+          border-bottom: solid thin transparent;
+        }
+
+        &.is-active {
+          background-color: white;
+
+          > a {
+            border-bottom: solid thin transparent;
+            color: #333;
+
+            &:hover {
+              cursor: default;
+            }
+          }
+        }
+      }
+    }
+  </style>
+{{/comment}}
